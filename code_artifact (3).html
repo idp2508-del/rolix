@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КУЛЬТ. — Твій гід культурою України</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..900;1,300..900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cult-cream': '#F6F4ED',
+                        'cult-dark': '#111111',
+                        'cult-orange': '#FF3D00',
+                        'cult-yellow': '#D4E157',
+                        'cult-gray': '#EBE8DE',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        syne: ['Syne', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F6F4ED;
+            color: #111111;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .heading-font {
+            font-family: 'Syne', 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        /* Rotating text animation for badge */
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .spin-slow {
+            animation: spinSlow 20s linear infinite;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F6F4ED;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #111111;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-cult-orange selection:text-white">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="w-full max-w-7xl mx-auto px-6 py-6 flex justify-between items-center z-20 relative">
+        <!-- Logo -->
+        <a href="#" class="text-3xl font-extrabold tracking-tighter flex items-baseline heading-font">
+            КУЛЬТ<span class="text-cult-orange text-4xl leading-none">.</span>
+        </a>
+
+        <!-- Menu links & Action button -->
+        <div class="flex items-center gap-6 md:gap-10">
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#events" class="hover:text-cult-orange transition-colors">Події</a>
+                <a href="#cities" class="hover:text-cult-orange transition-colors">Міста</a>
+                <a href="#about" class="hover:text-cult-orange transition-colors">Про нас</a>
+            </nav>
+
+            <button onclick="openModal()" class="px-5 py-2.5 border-2 border-cult-dark text-sm font-semibold rounded-none hover:bg-cult-dark hover:text-white transition-all duration-200 flex items-center gap-2">
+                Додати подію <span class="text-lg leading-none">+</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (Screenshot 1) -->
+    <section class="w-full max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch relative">
+        
+        <!-- Hero Left Column -->
+        <div class="lg:col-span-6 flex flex-col justify-between py-4 pr-0 lg:pr-6">
+            <div>
+                <span class="text-xs font-bold tracking-widest text-cult-dark/70 uppercase block mb-4">
+                    ТВІЙ ГІД КУЛЬТУРОЮ УКРАЇНИ
+                </span>
+                
+                <h1 class="text-6xl sm:text-7xl xl:text-8xl font-black leading-none mb-6 heading-font text-cult-dark uppercase">
+                    ВИХОДЬ<br>
+                    <span class="text-cult-orange">У СВІТ.</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-cult-dark/80 font-normal max-w-md leading-relaxed mb-8">
+                    Концерти, фестивалі, виставки й театр — усе найцікавіше поруч із тобою.
+                </p>
+
+                <div class="flex items-center gap-4">
+                    <a href="#events" class="inline-flex items-center gap-3 bg-cult-dark text-white px-7 py-4 text-base font-medium hover:bg-cult-orange transition-all duration-300 group">
+                        Знайти подію 
+                        <i class="fa-solid font-bold fa-arrow-right text-sm transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-12 lg:mt-16 pt-6 border-t border-cult-dark/10">
+                <span class="text-xs font-bold tracking-widest text-cult-dark/50 uppercase">
+                    ЩОТИЖНЯ — ПОНАД 200 НОВИХ ПОДІЙ
+                </span>
+            </div>
+        </div>
+
+        <!-- Hero Right Column (Banner Image + Tags) -->
+        <div class="lg:col-span-6 relative min-h-[380px] sm:min-h-[480px] lg:min-h-full rounded-none overflow-hidden group">
+            <!-- Event Image -->
+            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200&auto=format&fit=crop" 
+                 alt="Live Concert Culture Event" 
+                 class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700">
+
+            <!-- Dark Overlay Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+
+            <!-- Top Right Orange Date Tag -->
+            <div class="absolute top-0 right-0 bg-cult-orange text-white px-6 py-5 text-center shadow-lg">
+                <div class="text-2xl sm:text-3xl font-extrabold leading-none heading-font">12–14</div>
+                <div class="text-xs font-bold tracking-wider uppercase mt-1">ЛИПНЯ</div>
+            </div>
+
+            <!-- Floating Yellow Badge (Culture Music Art) -->
+            <div class="absolute -bottom-8 -left-8 md:bottom-4 md:left-4 z-10 w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-cult-yellow flex items-center justify-center p-2 shadow-xl hover:scale-110 transition-transform cursor-pointer">
+                <div class="relative w-full h-full flex items-center justify-center text-center">
+                    <svg class="w-full h-full spin-slow absolute inset-0" viewBox="0 0 100 100">
+                        <path id="circlePath" fill="none" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
+                        <text class="text-[9.5px] font-bold tracking-widest fill-cult-dark uppercase">
+                            <textPath href="#circlePath">
+                                • КУЛЬТУРА • МУЗИКА • МИСТЕЦТВО 
+                            </textPath>
+                        </text>
+                    </svg>
+                    <div class="w-3 h-3 rounded-full bg-cult-dark"></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- EVENTS SECTION (Screenshot 2) -->
+    <section id="events" class="w-full max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
+        <!-- Section Header -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
+            <h2 class="text-4xl sm:text-5xl font-black heading-font text-cult-dark">
+                Найближчі події
+            </h2>
+            <button onclick="filterEvents('all')" class="group flex items-center gap-2 text-sm font-semibold underline underline-offset-4 hover:text-cult-orange transition-colors">
+                Уся афіша 
+                <i class="fa-solid fa-arrow-right text-xs transform group-hover:translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+
+        <!-- Dynamic Category Filters -->
+        <div class="flex flex-wrap gap-2 sm:gap-3 mb-10">
+            <button onclick="filterEvents('all', this)" class="filter-btn active-filter px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-cult-dark text-white border border-cult-dark">
+                Усі події
+            </button>
+            <button onclick="filterEvents('concert', this)" class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-transparent text-cult-dark border border-cult-dark/30 hover:border-cult-dark">
+                Концерти
+            </button>
+            <button onclick="filterEvents('festival', this)" class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-transparent text-cult-dark border border-cult-dark/30 hover:border-cult-dark">
+                Фестивалі
+            </button>
+            <button onclick="filterEvents('theater', this)" class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-transparent text-cult-dark border border-cult-dark/30 hover:border-cult-dark">
+                Театр
+            </button>
+            <button onclick="filterEvents('art', this)" class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 bg-transparent text-cult-dark border border-cult-dark/30 hover:border-cult-dark">
+                Виставки
+            </button>
+        </div>
+
+        <!-- Event Cards Grid -->
+        <div id="events-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Cards generated dynamically via JavaScript -->
+        </div>
+    </section>
+
+    <!-- FOR ORGANIZERS BANNER SECTION (Screenshot 3) -->
+    <section id="about" class="w-full bg-cult-orange text-white py-16 md:py-20 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+            
+            <!-- Banner Left Content -->
+            <div class="max-w-2xl">
+                <span class="text-xs font-bold tracking-widest uppercase block mb-3 text-white/80">
+                    ДЛЯ ОРГАНІЗАТОРІВ
+                </span>
+                <h2 class="text-4xl sm:text-6xl lg:text-7xl font-black heading-font leading-none tracking-tight">
+                    СТВОРЮЄТЕ КУЛЬТУРУ?
+                </h2>
+            </div>
+
+            <!-- Banner Right Content & CTA Button -->
+            <div class="flex flex-col items-start gap-6 max-w-md">
+                <p class="text-base sm:text-lg font-normal text-white/90 leading-relaxed">
+                    Розкажіть про свою подію тисячам людей. Публікація займає лише кілька хвилин.
+                </p>
+                <button onclick="openModal()" class="bg-white text-cult-dark px-7 py-4 font-bold text-sm hover:bg-cult-dark hover:text-white transition-all duration-300 flex items-center gap-3 group">
+                    Додати подію 
+                    <i class="fa-solid fa-arrow-right text-xs transform group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER (Screenshot 3) -->
+    <footer class="w-full bg-cult-dark text-white py-10 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <!-- Footer Logo -->
+            <div>
+                <a href="#" class="text-2xl font-black tracking-tighter heading-font">
+                    КУЛЬТ<span class="text-cult-orange">.</span>
+                </a>
+            </div>
+
+            <!-- Footer Motto -->
+            <p class="text-xs sm:text-sm text-white/60 font-medium">
+                Місце, де культура знаходить своїх людей.
+            </p>
+
+            <!-- Copyright -->
+            <div class="text-xs text-white/40 font-mono">
+                © 2025 КУЛЬТ
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE MODAL FOR ADDING EVENT -->
+    <div id="event-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-cult-cream text-cult-dark w-full max-w-lg p-6 sm:p-8 relative shadow-2xl border-2 border-cult-dark transform scale-95 transition-transform duration-300" id="modal-content">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-cult-dark hover:text-cult-orange text-2xl font-bold w-8 h-8 flex items-center justify-center">
+                &times;
+            </button>
+
+            <h3 class="text-2xl sm:text-3xl font-black heading-font uppercase mb-2">
+                Додати подію
+            </h3>
+            <p class="text-xs text-cult-dark/70 mb-6">
+                Заповніть форму, і наша команда перевірить вашу подію перед публікацією.
+            </p>
+
+            <form id="add-event-form" onsubmit="handleFormSubmit(event)" class="space-y-4 text-sm">
+                <div>
+                    <label class="block text-xs font-bold uppercase mb-1">Назва події *</label>
+                    <input type="text" required placeholder="напр., Концерт гурту ДахаБраха" class="w-full px-4 py-3 bg-white border border-cult-dark/30 focus:border-cult-dark focus:outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase mb-1">Категорія *</label>
+                        <select required class="w-full px-4 py-3 bg-white border border-cult-dark/30 focus:border-cult-dark focus:outline-none">
+                            <option value="concert">Концерт</option>
+                            <option value="festival">Фестиваль</option>
+                            <option value="theater">Театр</option>
+                            <option value="art">Виставка</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase mb-1">Місто *</label>
+                        <input type="text" required placeholder="напр., Київ" class="w-full px-4 py-3 bg-white border border-cult-dark/30 focus:border-cult-dark focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase mb-1">Дата проведена *</label>
+                    <input type="text" required placeholder="напр., 15 Серпня" class="w-full px-4 py-3 bg-white border border-cult-dark/30 focus:border-cult-dark focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase mb-1">Опис події</label>
+                    <textarea rows="3" placeholder="Короткий опис заходу..." class="w-full px-4 py-3 bg-white border border-cult-dark/30 focus:border-cult-dark focus:outline-none resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-cult-dark text-white font-bold py-4 hover:bg-cult-orange transition-colors duration-200 uppercase text-xs tracking-wider">
+                    Надіслати на модерацію →
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-cult-dark text-white px-6 py-4 z-50 transform translate-y-20 opacity-0 transition-all duration-300 border-l-4 border-cult-orange shadow-xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-cult-yellow text-lg"></i>
+        <span id="toast-message" class="text-sm font-medium">Подію успішно збережено!</span>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // Events Data
+        const eventsData = [
+            {
+                id: 1,
+                title: 'Atlas Weekend',
+                category: 'festival',
+                categoryLabel: 'ФЕСТИВАЛЬ',
+                date: '12–14 ЛИПНЯ',
+                city: 'КИЇВ',
+                image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop',
+                isLiked: false
+            },
+            {
+                id: 2,
+                title: 'ДахаБраха наживо',
+                category: 'concert',
+                categoryLabel: 'КОНЦЕРТ',
+                date: '20 ЛИПНЯ',
+                city: 'ЛЬВІВ',
+                image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop',
+                isLiked: false
+            },
+            {
+                id: 3,
+                title: 'Сцена просто неба',
+                category: 'art',
+                categoryLabel: 'МИСТЕЦТВО',
+                date: '27 ЛИПНЯ',
+                city: 'ОДЕСА',
+                image: 'https://images.unsplash.com/photo-1469488865564-c2de10f69f96?q=80&w=800&auto=format&fit=crop',
+                isLiked: false
+            },
+            {
+                id: 4,
+                title: 'Гамлет. Сучасна Драма',
+                category: 'theater',
+                categoryLabel: 'ТЕАТР',
+                date: '02 СЕРПНЯ',
+                city: 'КИЇВ',
+                image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?q=80&w=800&auto=format&fit=crop',
+                isLiked: false
+            },
+            {
+                id: 5,
+                title: 'Сучасна виставка "Межа"',
+                category: 'art',
+                categoryLabel: 'ВИСТАВКА',
+                date: '05 СЕРПНЯ',
+                city: 'ДНІПРО',
+                image: 'https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=800&auto=format&fit=crop',
+                isLiked: false
+            },
+            {
+                id: 6,
+                title: 'Jazz on the Roof',
+                category: 'concert',
+                categoryLabel: 'КОНЦЕРТ',
+                date: '10 СЕРПНЯ',
+                city: 'ЛЬВІВ',
+                image: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=800&auto=format&fit=crop',
+                isLiked: false
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        // Render Events
+        function renderEvents() {
+            const grid = document.getElementById('events-grid');
+            grid.innerHTML = '';
+
+            const filteredEvents = currentFilter === 'all' 
+                ? eventsData 
+                : eventsData.filter(item => item.category === currentFilter);
+
+            if(filteredEvents.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-cult-dark/50">В даній категорії подій поки немає.</div>`;
+                return;
+            }
+
+            filteredEvents.forEach(event => {
+                const card = document.createElement('div');
+                card.className = 'group flex flex-col justify-between cursor-pointer';
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Image Box -->
+                        <div class="relative aspect-[4/3] w-full overflow-hidden mb-4 bg-gray-200">
+                            <img src="${event.image}" 
+                                 alt="${event.title}" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            
+                            <!-- Category Badge Tag -->
+                            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm text-cult-dark px-3 py-1 text-[10px] font-bold tracking-widest uppercase">
+                                ${event.categoryLabel}
+                            </div>
+
+                            <!-- Heart Icon Toggle -->
+                            <button onclick="toggleHeart(event, ${event.id})" 
+                                    class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-cult-dark hover:scale-110 transition-transform shadow-md">
+                                <i class="${event.isLiked ? 'fa-solid text-cult-orange' : 'fa-regular'} fa-heart text-sm"></i>
+                            </button>
+                        </div>
+
+                        <!-- Date & Location -->
+                        <div class="text-xs font-semibold text-cult-dark/50 tracking-wider uppercase mb-1">
+                            ${event.date} · ${event.city}
+                        </div>
+
+                        <!-- Event Title -->
+                        <h3 class="text-2xl font-extrabold heading-font text-cult-dark group-hover:text-cult-orange transition-colors mb-3">
+                            ${event.title}
+                        </h3>
+                    </div>
+
+                    <!-- Details Link -->
+                    <div class="pt-2">
+                        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider underline underline-offset-4 decoration-cult-dark/30 group-hover:decoration-cult-orange transition-all">
+                            Детальніше 
+                            <i class="fa-solid fa-arrow-right text-[10px] transform group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Toggle Heart Functionality
+        function toggleHeart(e, id) {
+            e.stopPropagation();
+            const event = eventsData.find(item => item.id === id);
+            if(event) {
+                event.isLiked = !event.isLiked;
+                renderEvents();
+                showToast(event.isLiked ? 'Подію додано до обраного!' : 'Подію вилучено з обраного.');
+            }
+        }
+
+        // Filter Categories
+        function filterEvents(category, btnElement) {
+            currentFilter = category;
+            
+            // Update active state of buttons
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-cult-dark', 'text-white');
+                btn.classList.add('bg-transparent', 'text-cult-dark');
+            });
+
+            if (btnElement) {
+                btnElement.classList.remove('bg-transparent', 'text-cult-dark');
+                btnElement.classList.add('bg-cult-dark', 'text-white');
+            }
+
+            renderEvents();
+        }
+
+        // Modal Controls
+        function openModal() {
+            const modal = document.getElementById('event-modal');
+            const content = document.getElementById('modal-content');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('event-modal');
+            const content = document.getElementById('modal-content');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+        }
+
+        // Handle Form Submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            closeModal();
+            showToast('Дякуємо! Вашу подію успішно відправлено на модерацію.');
+            document.getElementById('add-event-form').reset();
+        }
+
+        // Show Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        // Initialize Page
+        window.onload = function() {
+            renderEvents();
+        };
+    </script>
+</body>
+</html>
